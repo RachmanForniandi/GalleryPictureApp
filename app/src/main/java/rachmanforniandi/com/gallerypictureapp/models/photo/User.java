@@ -1,4 +1,4 @@
-package rachmanforniandi.com.gallerypictureapp.models;
+package rachmanforniandi.com.gallerypictureapp.models.photo;
 
 
 import com.google.gson.annotations.SerializedName;

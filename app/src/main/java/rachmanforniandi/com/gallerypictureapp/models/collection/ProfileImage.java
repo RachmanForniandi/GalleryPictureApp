@@ -1,4 +1,4 @@
-package rachmanforniandi.com.gallerypictureapp.models;
+package rachmanforniandi.com.gallerypictureapp.models.collection;
 
 
 import com.google.gson.annotations.SerializedName;
@@ -7,6 +7,9 @@ public class ProfileImage{
 
 	@SerializedName("small")
 	private String small;
+
+	@SerializedName("large")
+	private String large;
 
 	@SerializedName("medium")
 	private String medium;
@@ -17,6 +20,14 @@ public class ProfileImage{
 
 	public String getSmall(){
 		return small;
+	}
+
+	public void setLarge(String large){
+		this.large = large;
+	}
+
+	public String getLarge(){
+		return large;
 	}
 
 	public void setMedium(String medium){

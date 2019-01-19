@@ -21,7 +21,7 @@ import rachmanforniandi.com.gallerypictureapp.Adapters.PhotosAdapter;
 import rachmanforniandi.com.gallerypictureapp.R;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIInterface;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIProcessing;
-import rachmanforniandi.com.gallerypictureapp.models.Photo;
+import rachmanforniandi.com.gallerypictureapp.models.photo.Photo;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;

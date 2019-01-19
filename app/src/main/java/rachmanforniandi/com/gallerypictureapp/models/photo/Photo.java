@@ -1,6 +1,5 @@
-package rachmanforniandi.com.gallerypictureapp.models;
+package rachmanforniandi.com.gallerypictureapp.models.photo;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 

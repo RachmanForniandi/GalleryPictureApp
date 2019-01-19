@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <rachmanforniandi.com.gallerypictureapp.Utils.TemplateSquareImage
+        android:id="@+id/imgView_item_collection_photos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorTransparent"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/title_item_collection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Beautiful Views"
+            android:textColor="@color/colorWhite"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:id="@+id/total_item_collection_photos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="16 photos"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
+</FrameLayout>
