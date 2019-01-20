@@ -1,6 +1,6 @@
 package rachmanforniandi.com.gallerypictureapp.models.collection;
 
-import java.util.List;
+
 import com.google.gson.annotations.SerializedName;
 
 public class Collection{
