@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".views.Activities.FullScreenPhotoActivity">
+    
+    <ImageView
+        android:id="@+id/img_fullscreen_photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/placeholder"
+        android:scaleType="centerCrop"/>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@color/colorTransparent"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+        
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_user_avatar_fullscreen"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:scaleType="centerCrop"/>
+
+        <TextView
+            android:id="@+id/username_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Base.TextAppearance.AppCompat.Medium"
+            android:text="Don Baron"
+            android:textColor="@color/colorWhite"
+            android:layout_gravity="center"
+            android:layout_marginLeft="8dp"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fab_menu_full_screen_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="8dp"
+        app:menu_colorNormal="@color/colorAccent"
+        app:menu_colorPressed="@color/colorAccent">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_favorite_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_size="mini"
+            app:fab_colorNormal="#FFE049"
+            app:fab_label="Favorite"
+            android:src="@drawable/ic_check_favorite"/>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/fab_wallpaper_fullscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fab_size="mini"
+            app:fab_colorNormal="#FFE049"
+            app:fab_label="Wallpaper"
+            android:src="@drawable/ic_wallpaper"/>
+
+    </com.github.clans.fab.FloatingActionMenu>
+
+</RelativeLayout>

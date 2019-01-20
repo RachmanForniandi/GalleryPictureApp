@@ -1,21 +1,25 @@
 package rachmanforniandi.com.gallerypictureapp.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import de.hdodenhof.circleimageview.CircleImageView;
 import rachmanforniandi.com.gallerypictureapp.R;
 import rachmanforniandi.com.gallerypictureapp.Utils.GlideApp;
 import rachmanforniandi.com.gallerypictureapp.Utils.TemplateSquareImage;
 import rachmanforniandi.com.gallerypictureapp.models.photo.Photo;
+import rachmanforniandi.com.gallerypictureapp.views.Activities.FullScreenPhotoActivity;
 
 public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosHolder> {
     private Context ctx;
@@ -67,9 +71,21 @@ public class PhotosAdapter extends RecyclerView.Adapter<PhotosAdapter.PhotosHold
         @BindView(R.id.imgView_photo)
         TemplateSquareImage imgViewPhoto;
 
+        @BindView(R.id.item_photo_layout)
+        FrameLayout frameLayout;
+
         public PhotosHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+        }
+
+        @OnClick(R.id.item_photo_layout)
+        public void setFrameLayout(){
+            int position = getAdapterPosition();
+            String photoId = photos.get(position).getId();
+            Intent intent = new Intent(ctx, FullScreenPhotoActivity.class);
+            intent.putExtra("photoId",photoId);
+            ctx.startActivity(intent);
         }
     }
 }
