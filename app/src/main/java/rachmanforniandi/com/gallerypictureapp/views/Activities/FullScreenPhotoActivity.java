@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
@@ -21,6 +22,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import rachmanforniandi.com.gallerypictureapp.R;
+import rachmanforniandi.com.gallerypictureapp.Utils.Functions;
 import rachmanforniandi.com.gallerypictureapp.Utils.GlideApp;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIInterface;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIProcessing;
@@ -50,6 +52,7 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
     TextView txtUsername;
 
     private Unbinder unbinder;
+    private Bitmap bitmapPhoto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -99,6 +102,7 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
                         @Override
                         public void onResourceReady(@NonNull Bitmap resource, @Nullable Transition<? super Bitmap> transition) {
                             imgFullScreen.setImageBitmap(resource);
+                            bitmapPhoto = resource;
                         }
                     });
         }catch (Exception e){
@@ -113,6 +117,13 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
 
     @OnClick(R.id.fab_wallpaper_fullscreen)
     public void setFabWallpaper(){
+        if (bitmapPhoto != null){
+            if (Functions.setImageWallpaper(FullScreenPhotoActivity.this,bitmapPhoto)){
+                Toast.makeText(FullScreenPhotoActivity.this,"Set wallpaper successfully",Toast.LENGTH_LONG).show();
+            }else {
+                Toast.makeText(FullScreenPhotoActivity.this,"Set wallpaper failed",Toast.LENGTH_LONG).show();
+            }
+        }
         fabMenu.close(true);
     }
 
