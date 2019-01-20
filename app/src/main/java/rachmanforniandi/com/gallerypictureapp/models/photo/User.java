@@ -3,8 +3,10 @@ package rachmanforniandi.com.gallerypictureapp.models.photo;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
 
-public class User{
+
+public class User extends RealmObject {
 
 	@SerializedName("profile_image")
 	private ProfileImage profileImage;
