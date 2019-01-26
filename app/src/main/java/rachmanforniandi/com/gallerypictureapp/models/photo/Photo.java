@@ -9,8 +9,9 @@ import io.realm.annotations.PrimaryKey;
 public class Photo extends RealmObject {
 
 	@SerializedName("id")
-	private String id;
 	@PrimaryKey
+	private String id;
+
 	@SerializedName("description")
 	private String description;
 
