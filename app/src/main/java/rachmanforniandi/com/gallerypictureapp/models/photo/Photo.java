@@ -21,6 +21,17 @@ public class Photo extends RealmObject {
 	@SerializedName("user")
 	private User user = new User();
 
+	@SerializedName("likes")
+	private int likes;
+
+	public int getLikes() {
+		return likes;
+	}
+
+	public void setLikes(int likes) {
+		this.likes = likes;
+	}
+
 	public void setDescription(String description){
 		this.description = description;
 	}
