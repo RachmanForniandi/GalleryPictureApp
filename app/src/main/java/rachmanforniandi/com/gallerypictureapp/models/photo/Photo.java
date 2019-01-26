@@ -16,10 +16,10 @@ public class Photo extends RealmObject {
 	private String description;
 
 	@SerializedName("urls")
-	private Urls urls;
+	private Urls urls = new Urls();
 
 	@SerializedName("user")
-	private User user;
+	private User user = new User();
 
 	public void setDescription(String description){
 		this.description = description;

@@ -14,7 +14,7 @@ public class RealmController {
 
     public void savePhoto(Photo photo){
         realm.beginTransaction();
-        realm.copyFromRealm(photo);
+        realm.copyToRealm(photo);
         realm.commitTransaction();
     }
 
@@ -35,7 +35,7 @@ public class RealmController {
         return true;
     }
 
-    public List<Photo>getPhoto(){
+    public List<Photo> getPhotos(){
         return realm.where(Photo.class).findAll();
     }
 }
