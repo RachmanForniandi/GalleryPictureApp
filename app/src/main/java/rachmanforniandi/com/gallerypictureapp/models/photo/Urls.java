@@ -3,8 +3,10 @@ package rachmanforniandi.com.gallerypictureapp.models.photo;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
 
-public class Urls{
+
+public class Urls extends RealmObject {
 
 	@SerializedName("regular")
 	private String regular;

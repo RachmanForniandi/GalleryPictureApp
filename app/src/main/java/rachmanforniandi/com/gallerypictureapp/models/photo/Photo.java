@@ -2,21 +2,24 @@ package rachmanforniandi.com.gallerypictureapp.models.photo;
 
 import com.google.gson.annotations.SerializedName;
 
+import io.realm.RealmObject;
+import io.realm.annotations.PrimaryKey;
 
-public class Photo{
 
+public class Photo extends RealmObject {
+
+	@SerializedName("id")
+	@PrimaryKey
+	private String id;
 
 	@SerializedName("description")
 	private String description;
 
 	@SerializedName("urls")
-	private Urls urls;
-
-	@SerializedName("id")
-	private String id;
+	private Urls urls = new Urls();
 
 	@SerializedName("user")
-	private User user;
+	private User user = new User();
 
 	public void setDescription(String description){
 		this.description = description;
