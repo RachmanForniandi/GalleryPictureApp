@@ -11,7 +11,7 @@ public class AppController extends Application {
         super.onCreate();
         Realm.init(this);
         RealmConfiguration realmConfiguration = new RealmConfiguration.Builder()
-                .name("wallpaper.realms")
+                .name("GalleryPictureApp.realms")
                 .build();
 
         Realm.setDefaultConfiguration(realmConfiguration);

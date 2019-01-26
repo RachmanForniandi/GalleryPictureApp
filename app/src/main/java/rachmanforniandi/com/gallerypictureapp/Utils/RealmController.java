@@ -6,6 +6,7 @@ import io.realm.Realm;
 import rachmanforniandi.com.gallerypictureapp.models.photo.Photo;
 
 public class RealmController {
+
     private final Realm realm;
     public RealmController(){
         realm = Realm.getDefaultInstance();

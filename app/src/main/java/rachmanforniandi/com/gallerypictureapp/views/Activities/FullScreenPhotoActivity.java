@@ -2,10 +2,11 @@ package rachmanforniandi.com.gallerypictureapp.views.Activities;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import com.bumptech.glide.request.transition.Transition;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 
+import butterknife.BindDrawable;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -24,6 +26,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import rachmanforniandi.com.gallerypictureapp.R;
 import rachmanforniandi.com.gallerypictureapp.Utils.Functions;
 import rachmanforniandi.com.gallerypictureapp.Utils.GlideApp;
+import rachmanforniandi.com.gallerypictureapp.Utils.RealmController;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIInterface;
 import rachmanforniandi.com.gallerypictureapp.WebServiceUtils.APIProcessing;
 import rachmanforniandi.com.gallerypictureapp.models.photo.Photo;
@@ -51,8 +54,17 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
     @BindView(R.id.username_fullscreen)
     TextView txtUsername;
 
+    @BindDrawable(R.drawable.ic_check_favorite)
+    Drawable icFavorite;
+
+    @BindDrawable(R.drawable.ic_check_favorited)
+    Drawable icFavoritePressed;
+
     private Unbinder unbinder;
     private Bitmap bitmapPhoto;
+    private RealmController realmController;
+    private Photo photo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +75,11 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String photoId = intent.getStringExtra("photoId");
         getPhoto(photoId);
+
+        realmController = new RealmController();
+        if (realmController.isPhotoExist(photoId)){
+            fabFavorite.setImageDrawable(icFavoritePressed);
+        }
     }
 
     private void getPhoto(String id) {
@@ -72,7 +89,7 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Photo> call, Response<Photo> response) {
                 if (response.isSuccessful()){
-                    Photo photo = response.body();
+                    photo = response.body();
                     updateUI(photo);
                 }
             }
@@ -112,6 +129,16 @@ public class FullScreenPhotoActivity extends AppCompatActivity {
 
     @OnClick(R.id.fab_favorite_fullscreen)
     public void setFabFavorite(){
+
+        if (realmController.isPhotoExist(photo.getId())){
+            realmController.deletePhoto(photo);
+            fabFavorite.setImageDrawable(icFavorite);
+            Toast.makeText(FullScreenPhotoActivity.this,"Remove Favorite",Toast.LENGTH_LONG).show();
+        }else {
+            realmController.savePhoto(photo);
+            fabFavorite.setImageDrawable(icFavoritePressed);
+            Toast.makeText(FullScreenPhotoActivity.this,"Favorited",Toast.LENGTH_LONG).show();
+        }
         fabMenu.close(true);
     }
 
