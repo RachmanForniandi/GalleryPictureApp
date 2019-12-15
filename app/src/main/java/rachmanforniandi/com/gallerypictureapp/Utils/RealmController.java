@@ -19,12 +19,9 @@ public class RealmController {
     }
 
     public void deletePhoto(final Photo photo){
-        realm.executeTransaction(new Realm.Transaction() {
-            @Override
-            public void execute(Realm realm) {
-                Photo resultPhoto = realm.where(Photo.class).equalTo("id",photo.getId()).findFirst();
-                resultPhoto.deleteFromRealm();
-            }
+        realm.executeTransaction(realm -> {
+            Photo resultPhoto = realm.where(Photo.class).equalTo("id",photo.getId()).findFirst();
+            resultPhoto.deleteFromRealm();
         });
     }
 

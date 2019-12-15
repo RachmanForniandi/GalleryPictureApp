@@ -13,7 +13,8 @@
         android:roundIcon="@drawable/shutter"
         android:supportsRtl="true"
         android:name=".App.AppController"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
 
         <activity
             android:name=".views.Activities.MainActivity"
